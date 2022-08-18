@@ -1,0 +1,24 @@
+version: '3.9'
+services:
+  jenkins:
+    image: jenkins/jenkins:2.364-jdk11
+    platform: linux/arm64
+    user: root
+    privileged: true
+    ports:
+      - 8080:8080
+    deploy:
+      restart_policy:
+        condition: on-failure
+      resources:
+        limits:
+          memory: 3G
+    volumes:
+      - type: volume
+        source: jenkins_home
+        target: /var/jenkins_home/
+      - /usr/bin/docker:/usr/bin/docker
+      - /var/run/docker.sock:/var/run/docker.sock
+
+volumes:
+  jenkins_home:
