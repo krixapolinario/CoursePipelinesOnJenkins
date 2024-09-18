@@ -3,7 +3,7 @@ name: fast_cicd
 services:
   jenkins:
     image: jenkins/jenkins:2.477-jdk21
-    platform: linux/arm64
+    # platform: linux/arm64
     user: root
     privileged: true
     ports:
